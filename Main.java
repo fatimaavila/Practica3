@@ -2,6 +2,9 @@ import java.util.Scanner;
 import java.util.Arrays; 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+
 
 class Main {
 private static String convertToStars(int num) {
@@ -21,7 +24,7 @@ private static String convertToStars(int num) {
         parrafo=parrafo.toUpperCase();
         parrafo= parrafo.replaceAll("\\s+","");
         char[] c=parrafo.toCharArray();
-        System.out.println(parrafo);
+        //System.out.println(parrafo);
         //System.out.print("\nTotal Character :=:"+c.length+"\nTotal Spaces :=:"+ (parrafo.length()-parrafo.replace(" ", "").toCharArray().length));
 
        // System.out.println("\nTotal Strings :=:"+ parrafo.split(" ").length);
@@ -48,15 +51,20 @@ private static String convertToStars(int num) {
     //Now To find the highest character repeated 
     int max=0;
     char maxCharacter = 'a';//setting to a by default
+    System.out.println("\n");
+    ArrayList<Integer> list = new ArrayList<>();
     for (Map.Entry<Character, Integer> entry : map1.entrySet())
     {
-        System.out.println("Key= " + entry.getKey() + " " + convertToStars(entry.getValue()));
-        if(max<entry.getValue()){
-            max=entry.getValue();
-            maxCharacter=entry.getKey();
-      }
-    }
-    System.out.println("Max Character= " + maxCharacter + "Max Count " + max);
+        System.out.println("Key= " + entry.getKey() + " " + entry.getValue() + " "+ convertToStars(entry.getValue()));
+         list.add(entry.getValue());
+      
+    } // termina for 
+
+   // System.out.println(list.toString());
+     /* Sorting in decreasing order*/
+	   Collections.sort(list, Collections.reverseOrder());
+     System.out.println(list.toString());
+  
   }
 
   }
