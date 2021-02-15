@@ -7,30 +7,19 @@ import java.util.Collections;
 
 
 class Main {
+static Map<Character,Integer> map1 = new HashMap<Character,Integer>(); //array asociativo para key y value         
+
 private static String convertToStars(int num) {
     StringBuilder builder = new StringBuilder();
     for (int j = 0; j < num; j++) {
         builder.append('*');
     }
     return builder.toString();
-}
+} // metodo para string estrellitas (histograma)
 
-  public static void main(String[] args) {
-    String parrafo;
-     Scanner sc=new Scanner(System.in);
-        System.out.print("::Ingrese sus párrafos aquí::\n\t"); 
-        
-        parrafo=sc.nextLine();
-        parrafo=parrafo.toUpperCase();
-        parrafo= parrafo.replaceAll("\\s+","");
-        char[] c=parrafo.toCharArray();
-        
-
-       // System.out.println("\nTotal Strings :=:"+ parrafo.split(" ").length);
-
-         Map<Character,Integer> map1 = new HashMap<Character,Integer>();
-
-    for(int k=0; k < c.length; k++)
+public static void cuentaLetras(char[] c)
+{
+   for(int k=0; k < c.length; k++)
     {
       char currentChar = c[k];  
         //to check that currentChar is not in map, if not will add 1 count for firsttime
@@ -41,10 +30,25 @@ private static String convertToStars(int num) {
       else {
         map1.put(currentChar, map1.get(currentChar) + 1);
       }
-
-  
-      
     } //todo el parrafo
+
+}
+///======================== main=====================
+
+  public static void main(String[] args) {
+    String parrafo;
+     Scanner sc=new Scanner(System.in);
+        System.out.print("::Ingrese sus párrafos aquí::\n\t"); 
+       // sc.skip("\u0085");
+        
+        parrafo=sc.nextLine();
+        parrafo=parrafo.toUpperCase();
+        parrafo= parrafo.replaceAll("\\s+",""); // quitar los espacios
+        //parrafo= parrafo.replaceAll("\r\n","");
+        char[] c=parrafo.toCharArray();
+        
+        cuentaLetras(c);  //llena array asociativo
+   
 
     //Now To find the highest character repeated 
     //int max=0;
